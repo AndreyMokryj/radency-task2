@@ -21,6 +21,7 @@ class Contact {
   }
 
   String getInitials(){
-    return name.trim()[0] + getLastName()[0];
+    String lastName = getLastName();
+    return name.trim()[0] + (lastName != name.trim() ? lastName[0] : "");
   }
 }

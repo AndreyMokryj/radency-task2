@@ -69,7 +69,8 @@ class MyHomePage extends StatelessWidget {
                   user: element,
                 ),
             )).toList(),
-          )).toList(),
+          )).toList()
+            + [SafeArea(child: Container())],
         ),
       ),
     );
@@ -87,26 +88,42 @@ List contacts = [
     name : "Joshua Allison",
     company : "Hooli Inc.",
     favourite : true,
+    image: "assets/images/person2.png",
   ),
   Contact(
     name : "Sam Barnard",
     company : "UC Barkeley",
+    image: "assets/images/person3.png",
   ),
   Contact(
     name : "Megan Blakely",
     company : "Husky Energy",
+    image: "assets/images/person4.png",
   ),
   Contact(
     name : "Joel Cannon",
     company : "Hooli Inc.",
+    image: "assets/images/person5.png",
   ),
   Contact(
     name : "Kyle Dickenson",
     company : "Pied Piper",
     favourite : true,
+    image: "assets/images/person7.png",
   ),
   Contact(
     name : "Lauren Davis",
     company : "UC Barkeley",
+    image: "assets/images/person6.png",
+  ),
+  Contact(
+    name : "John Evans",
+    company : "UC Barkeley",
+    image: "assets/images/person8.png",
+  ),
+  Contact(
+    name : "Jane Elson",
+    company : "Hooli Inc.",
+    image: "assets/images/person9.png",
   ),
 ];

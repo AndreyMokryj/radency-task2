@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:radency_task2/main.dart';
 import 'package:radency_task2/model/contact.dart';
+import 'package:radency_task2/styles.dart';
 
 class ContactWidget extends StatefulWidget{
   final Contact user;
@@ -25,15 +26,37 @@ class _ContactWidgetState extends State<ContactWidget> {
       children: [
         GestureDetector(
           child: Container(
-            width: 30,
-            height: 30,
-            color: user.favourite ? Colors.green : Colors.red,
+            color: Colors.transparent,
+            padding: EdgeInsets.all(10),
+            child: Icon(
+              Icons.star,
+              color: user.favourite ? Colors.cyan : Colors.transparent,
+            ),
           ),
           onTap: (){
             setState(() {
               contacts.firstWhere((element) => user.id == element.id).favourite = !(user.favourite);
             });
           },
+        ),
+        CircleAvatar(
+          child: Text(user.getLastNameLetter()),
+        ),
+        SizedBox(
+          width: 15,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              user.name,
+              style: nameStyle,
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Text(user.company),
+          ],
         )
       ],
     );

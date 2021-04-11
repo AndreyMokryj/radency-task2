@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:radency_task2/contact_widget.dart';
 import 'package:radency_task2/model/contact.dart';
+import 'package:radency_task2/styles.dart';
 
 void main() {
   runApp(MyApp());
@@ -39,19 +40,35 @@ class MyHomePage extends StatelessWidget {
     });
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-
-      ),
+      // appBar: AppBar(
+      //   title: Text(title),
+      //
+      // ),
       body: SingleChildScrollView(
         child: Column(
-          children: contactsMap.entries.map((entry) => Column(
+          children: <Widget>[
+            SafeArea(child: Container())
+          ] + contactsMap.entries.map((entry) => Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(entry.key)
-            ] + entry.value.map((element) => ContactWidget(
-                user: element,
-              )).toList(),
+              Container(
+                margin: EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 10
+                ),
+                child: Text(
+                  entry.key,
+                  style: letterStyle,
+                )
+              )
+            ] + entry.value.map((element) => Container(
+              margin: EdgeInsets.only(
+                bottom: 10
+              ),
+              child: ContactWidget(
+                  user: element,
+                ),
+            )).toList(),
           )).toList(),
         ),
       ),

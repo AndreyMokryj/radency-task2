@@ -15,4 +15,8 @@ class Contact {
 
     return name1.substring(index + 1);
   }
+
+  String getLastNameLetter(){
+    return getLastName()[0];
+  }
 }

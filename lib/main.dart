@@ -7,21 +7,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Contacts'),
@@ -37,6 +28,15 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     contacts.sort((el1, el2) => el1.getLastName().compareTo(el2.getLastName()));
+    Map<String, List> contactsMap = <String, List>{};
+    contacts.forEach((element) {
+      String firstLetter = element.getLastNameLetter();
+      if(contactsMap.containsKey(firstLetter)){
+        contactsMap[firstLetter].add(element);
+      } else {
+        contactsMap[firstLetter] = [element];
+      }
+    });
 
     return Scaffold(
       appBar: AppBar(
@@ -45,9 +45,13 @@ class MyHomePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: contacts.map((element) => ContactWidget(
-            user: element,
+          children: contactsMap.entries.map((entry) => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(entry.key)
+            ] + entry.value.map((element) => ContactWidget(
+                user: element,
+              )).toList(),
           )).toList(),
         ),
       ),

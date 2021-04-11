@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:radency_task2/contact_widget.dart';
+import 'package:radency_task2/model/contact.dart';
 
 void main() {
   runApp(MyApp());
@@ -35,6 +36,8 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    contacts.sort((el1, el2) => el1.getLastName().compareTo(el2.getLastName()));
+
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -43,7 +46,7 @@ class MyHomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.center,
-          children:contacts.map((element) => ContactWidget(
+          children: contacts.map((element) => ContactWidget(
             user: element,
           )).toList(),
         ),
@@ -53,19 +56,35 @@ class MyHomePage extends StatelessWidget {
 }
 
 List contacts = [
-  {
-    "name" : "John Agnew",
-    "company" : "Stanford Univercity",
-    "favourite" : true,
-  },
-  {
-    "name" : "Joshua Allison",
-    "company" : "Hooli Inc.",
-    "favourite" : false,
-  },
-  {
-    "name" : "Sam Barnard",
-    "company" : "UC Barkeley",
-    "favourite" : false,
-  },
+  Contact(
+    name: "John Agnew",
+    company : "Stanford Univercity",
+    favourite : true,
+  ),
+  Contact(
+    name : "Joshua Allison",
+    company : "Hooli Inc.",
+    favourite : true,
+  ),
+  Contact(
+    name : "Sam Barnard",
+    company : "UC Barkeley",
+  ),
+  Contact(
+    name : "Megan Blakely",
+    company : "Husky Energy",
+  ),
+  Contact(
+    name : "Joel Cannon",
+    company : "Hooli Inc.",
+  ),
+  Contact(
+    name : "Kyle Dickenson",
+    company : "Pied Piper",
+    favourite : true,
+  ),
+  Contact(
+    name : "Lauren Davis",
+    company : "UC Barkeley",
+  ),
 ];

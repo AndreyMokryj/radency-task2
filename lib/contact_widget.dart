@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:radency_task2/main.dart';
+import 'package:radency_task2/model/contact.dart';
 
 class ContactWidget extends StatefulWidget{
-  final user;
+  final Contact user;
 
   const ContactWidget({Key key, this.user}) : super(key: key);
 
@@ -11,7 +12,7 @@ class ContactWidget extends StatefulWidget{
 }
 
 class _ContactWidgetState extends State<ContactWidget> {
-  var user;
+  Contact user;
 
   @override
   void initState() {
@@ -26,11 +27,11 @@ class _ContactWidgetState extends State<ContactWidget> {
           child: Container(
             width: 30,
             height: 30,
-            color: user["favourite"] ? Colors.green : Colors.red,
+            color: user.favourite ? Colors.green : Colors.red,
           ),
           onTap: (){
             setState(() {
-              contacts.firstWhere((element) => user == element)["favourite"] = !(user["favourite"]);
+              contacts.firstWhere((element) => user.id == element.id).favourite = !(user.favourite);
             });
           },
         )

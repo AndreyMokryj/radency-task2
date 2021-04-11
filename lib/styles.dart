@@ -13,3 +13,7 @@ const companyStyle = TextStyle(
 const letterStyle = TextStyle(
   fontSize: 16,
 );
+
+const initialsStyle = TextStyle(
+  fontSize: 18,
+);

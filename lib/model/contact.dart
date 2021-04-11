@@ -19,4 +19,8 @@ class Contact {
   String getLastNameLetter(){
     return getLastName()[0];
   }
+
+  String getInitials(){
+    return name.trim()[0] + getLastName()[0];
+  }
 }

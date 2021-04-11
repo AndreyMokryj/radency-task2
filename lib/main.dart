@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Contacts',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -81,6 +81,7 @@ List contacts = [
     name: "John Agnew",
     company : "Stanford Univercity",
     favourite : true,
+    image: "assets/images/person1.png",
   ),
   Contact(
     name : "Joshua Allison",

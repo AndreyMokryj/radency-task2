@@ -40,7 +40,12 @@ class _ContactWidgetState extends State<ContactWidget> {
           },
         ),
         CircleAvatar(
-          child: Text(user.getLastNameLetter()),
+          radius: 25,
+          foregroundImage: (user.image ?? "").isNotEmpty ? AssetImage(user.image) : null,
+          child: Text(
+            user.getInitials(),
+            style: initialsStyle,
+          ),
         ),
         SizedBox(
           width: 15,
